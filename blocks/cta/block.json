@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/cta",
+  "version": "1.1.0",
+  "title": "CTA",
+  "category": "aipilot",
+  "icon": "megaphone",
+  "description": "Финальный призыв к действию с двумя кнопками.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "Начнём"
+    },
+    "title": {
+      "type": "string",
+      "default": "Сделайте следующий шаг."
+    },
+    "text": {
+      "type": "string",
+      "default": "Кратко объясните, что произойдёт после нажатия кнопки."
+    },
+    "primaryLabel": {
+      "type": "string",
+      "default": "Начать"
+    },
+    "primaryUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "secondaryLabel": {
+      "type": "string",
+      "default": "Подробнее"
+    },
+    "secondaryUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "tone": {
+      "type": "string",
+      "default": "acid",
+      "enum": [
+        "acid",
+        "blue",
+        "ink"
+      ]
+    },
+    "align": {
+      "type": "string",
+      "default": "center",
+      "enum": [
+        "left",
+        "center"
+      ]
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php"
+}

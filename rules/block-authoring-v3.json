@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 2,
+  "profile": "aipilot-block-authoring-v3",
+  "wordpress": {
+    "minimum": "6.9",
+    "tested": "7.0",
+    "blockApiVersion": 3,
+    "editorContext": "iframe-compatible"
+  },
+  "principles": [
+    "Use block.json as the canonical registration source on PHP and JavaScript sides.",
+    "Store agent-editable content in declared attributes or InnerBlocks, never only in generated markup.",
+    "Prefer semantic registered blocks over arbitrary HTML.",
+    "Render important public content on the server so it exists in initial HTML.",
+    "Use theme.json presets and controlled enums instead of arbitrary CSS values."
+  ],
+  "folderContract": {
+    "required": [
+      "block.json",
+      "ai.json",
+      "index.js",
+      "index.asset.php",
+      "render.php"
+    ],
+    "optional": [
+      "style.css",
+      "editor.css",
+      "view.js",
+      "view.asset.php"
+    ]
+  },
+  "blockJson": {
+    "required": {
+      "$schema": "https://schemas.wp.org/trunk/block.json",
+      "apiVersion": 3,
+      "name": "namespace/slug",
+      "version": "semver",
+      "title": "human-readable",
+      "category": "registered category",
+      "description": "clear purpose",
+      "textdomain": "plugin text domain",
+      "attributes": "typed object",
+      "supports": {
+        "html": false
+      }
+    },
+    "recommended": [
+      "icon",
+      "keywords",
+      "example",
+      "styles",
+      "variations",
+      "parent",
+      "ancestor",
+      "allowedBlocks",
+      "usesContext",
+      "providesContext",
+      "selectors"
+    ],
+    "assetFields": {
+      "editorScript": "file:./index.js",
+      "style": "registered shared handle or file: path",
+      "editorStyle": "registered handle or file: path",
+      "render": "file:./render.php",
+      "viewScript": "only for real front-end behavior"
+    },
+    "registration": "register_block_type() must receive the block directory so metadata and assets are discovered from block.json"
+  },
+  "apiV3": {
+    "requirements": [
+      "Editor code must work inside an iframe and must not depend on styles or globals from the parent admin document.",
+      "Use useBlockProps() on the editor root and get_block_wrapper_attributes() on the server root.",
+      "Register editor and front-end assets explicitly through block metadata.",
+      "Do not query or mutate editor DOM outside the block tree.",
+      "Use WordPress packages declared in index.asset.php instead of undeclared globals."
+    ]
+  },
+  "attributes": {
+    "allowedTypes": [
+      "string",
+      "boolean",
+      "integer",
+      "number",
+      "array",
+      "object"
+    ],
+    "rules": [
+      "Every editable value must be declared in block.json.",
+      "Use enum for layouts, tones, alignment, spacing and visual variants.",
+      "URLs are strings but must be escaped with esc_url() at render time.",
+      "Limit repeaters in render.php with array_slice() and document limits in ai.json.",
+      "Avoid attributes containing raw HTML, CSS, JavaScript, PHP or serialized executable code."
+    ]
+  },
+  "rendering": {
+    "dynamicBlocks": {
+      "save": "return null, except container blocks may save InnerBlocks.Content",
+      "server": "render.php",
+      "escaping": {
+        "plainText": "esc_html",
+        "attributes": "esc_attr",
+        "urls": "esc_url",
+        "limitedMarkup": "wp_kses_post only when explicitly required"
+      }
+    },
+    "innerBlocks": {
+      "containerEditor": "InnerBlocks with explicit allowedBlocks",
+      "containerSave": "InnerBlocks.Content",
+      "server": "render $content inside the semantic container"
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": "enable on section-level blocks",
+    "align": "limit to wide/full where required",
+    "color": "prefer theme tokens or controlled tone attributes",
+    "spacing": "prefer semantic spacing enum",
+    "typography": "avoid uncontrolled per-instance settings for agent-built pages"
+  },
+  "semantics": {
+    "page": {
+      "h1": "exactly one primary H1; aipilot/hero provides H1",
+      "sectionHeadings": "H2",
+      "cardHeadings": "H3",
+      "nestedItemHeadings": "H4 only below H3"
+    },
+    "landmarks": [
+      "header",
+      "nav",
+      "main",
+      "section",
+      "article",
+      "aside",
+      "footer"
+    ],
+    "rules": [
+      "Do not select heading levels for visual size; style headings with CSS or theme.json.",
+      "Every titled section should use aria-labelledby pointing to its visible heading.",
+      "Use native lists, buttons, links, details and summary before adding ARIA roles."
+    ]
+  },
+  "accessibility": {
+    "wcagTarget": "2.2 AA",
+    "requirements": [
+      "Interactive controls must have an accessible name and keyboard operation.",
+      "Decorative shapes, symbols and repeated visual-only labels must use aria-hidden=true.",
+      "Informative images require meaningful alt text; decorative images use empty alt.",
+      "Links must have valid href values and describe their destination outside surrounding context.",
+      "Use aria-expanded, aria-controls and focus management only for custom interactive widgets; native details/summary does not need duplicated roles.",
+      "Dynamic status updates in the editor should use WordPress a11y announcements when user feedback is required.",
+      "Respect prefers-reduced-motion and never make motion essential to understanding."
+    ]
+  },
+  "seoAndAiSearch": {
+    "requirements": [
+      "Keep important text visible in server-rendered HTML.",
+      "Use one descriptive H1 and a logical heading hierarchy.",
+      "Expose public pages through WordPress sitemap and internal links.",
+      "Structured data must match visible page content.",
+      "Do not hide keyword text in images, CSS pseudo-elements or aria-label attributes.",
+      "llms.txt and public JSON context are discovery aids, not replacements for crawlable HTML and sitemap.",
+      "Claims about SEO or AI discoverability must reflect active site capabilities."
+    ]
+  },
+  "agentSafety": {
+    "forbidden": [
+      "core/html in generated page trees",
+      "inline script",
+      "inline event handlers",
+      "javascript: URLs",
+      "data-exfiltration URLs",
+      "undeclared block names",
+      "arbitrary style attributes outside allowed supports"
+    ],
+    "workflow": [
+      "read manifest",
+      "read rules",
+      "read current block tree",
+      "generate typed proposal",
+      "validate",
+      "preview",
+      "create or update draft",
+      "publish only with separate permission"
+    ]
+  },
+  "placement": {
+    "recommendedPageOrder": [
+      "aipilot/hero",
+      "aipilot/logo-cloud",
+      "aipilot/statement",
+      "aipilot/feature-grid",
+      "aipilot/split-panel",
+      "aipilot/seo-ai-benefits",
+      "aipilot/steps",
+      "aipilot/stats",
+      "aipilot/testimonial",
+      "aipilot/faq",
+      "aipilot/cta"
+    ],
+    "rootSections": [
+      "aipilot/hero",
+      "aipilot/logo-cloud",
+      "aipilot/statement",
+      "aipilot/feature-grid",
+      "aipilot/split-panel",
+      "aipilot/seo-ai-benefits",
+      "aipilot/steps",
+      "aipilot/stats",
+      "aipilot/testimonial",
+      "aipilot/faq",
+      "aipilot/cta",
+      "aipilot/section"
+    ],
+    "childOnly": {
+      "aipilot/feature-card": {
+        "parent": [
+          "aipilot/feature-grid"
+        ]
+      }
+    },
+    "maximums": {
+      "aipilot/hero": 1,
+      "aipilot/seo-ai-benefits": 1,
+      "aipilot/faq": 1,
+      "aipilot/cta": 2
+    }
+  }
+}

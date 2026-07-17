@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/split-panel",
+  "version": "1.1.0",
+  "title": "Текст + визуальная панель",
+  "category": "aipilot",
+  "icon": "columns",
+  "description": "Двухколоночная секция с абстрактным интерфейсом.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "eyebrow": {
+      "type": "string",
+      "default": "Система"
+    },
+    "title": {
+      "type": "string",
+      "default": "Покажите, как работает продукт."
+    },
+    "text": {
+      "type": "string",
+      "default": "Опишите процесс или технологию простыми словами."
+    },
+    "buttonLabel": {
+      "type": "string",
+      "default": "Подробнее"
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "visual": {
+      "type": "string",
+      "default": "registry",
+      "enum": [
+        "registry",
+        "cards"
+      ]
+    },
+    "reverse": {
+      "type": "boolean",
+      "default": false
+    },
+    "tone": {
+      "type": "string",
+      "default": "white",
+      "enum": [
+        "white",
+        "paper",
+        "ink"
+      ]
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php"
+}

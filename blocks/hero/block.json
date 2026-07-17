@@ -1,0 +1,100 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/hero",
+  "version": "1.1.0",
+  "title": "Hero",
+  "category": "aipilot",
+  "icon": "cover-image",
+  "description": "Главный первый экран с CTA и абстрактной визуализацией.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "badge": {
+      "type": "string",
+      "default": "AI PILOT"
+    },
+    "title": {
+      "type": "string",
+      "default": "Сайт, который понимает команды."
+    },
+    "description": {
+      "type": "string",
+      "default": "Краткое описание продукта или услуги."
+    },
+    "primaryLabel": {
+      "type": "string",
+      "default": "Начать"
+    },
+    "primaryUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "secondaryLabel": {
+      "type": "string",
+      "default": "Подробнее"
+    },
+    "secondaryUrl": {
+      "type": "string",
+      "default": "#features"
+    },
+    "tone": {
+      "type": "string",
+      "default": "ink",
+      "enum": [
+        "ink",
+        "paper"
+      ]
+    },
+    "alignment": {
+      "type": "string",
+      "default": "left",
+      "enum": [
+        "left",
+        "center"
+      ]
+    },
+    "visual": {
+      "type": "string",
+      "default": "personas",
+      "enum": [
+        "personas",
+        "grid",
+        "none"
+      ]
+    },
+    "personas": {
+      "type": "array",
+      "default": [
+        "Стратег",
+        "Маркетолог",
+        "Редактор",
+        "Дизайнер",
+        "SEO",
+        "Аналитик"
+      ],
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php"
+}

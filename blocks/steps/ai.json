@@ -1,0 +1,37 @@
+{
+  "name": "aipilot/steps",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Нумерованный процесс или последовательность.",
+  "useWhen": [
+    "этапы работы",
+    "онбординг",
+    "план внедрения"
+  ],
+  "constraints": {
+    "recommendedItems": "3-6"
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-section"
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2,
+    "items": "ordered-process"
+  },
+  "accessibility": {
+    "nativeOrderedListPreferred": true,
+    "labelledByHeading": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

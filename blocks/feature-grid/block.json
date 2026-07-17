@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/feature-grid",
+  "version": "1.1.0",
+  "title": "Сетка преимуществ",
+  "category": "aipilot",
+  "icon": "screenoptions",
+  "description": "Заголовок и сетка дочерних карточек.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "eyebrow": {
+      "type": "string",
+      "default": "Возможности"
+    },
+    "title": {
+      "type": "string",
+      "default": "Что получает пользователь"
+    },
+    "description": {
+      "type": "string",
+      "default": "Короткое пояснение раздела."
+    },
+    "columns": {
+      "type": "integer",
+      "default": 3,
+      "enum": [
+        2,
+        3,
+        4
+      ]
+    },
+    "tone": {
+      "type": "string",
+      "default": "paper",
+      "enum": [
+        "paper",
+        "white"
+      ]
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php",
+  "allowedBlocks": [
+    "aipilot/feature-card"
+  ]
+}

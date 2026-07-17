@@ -1,0 +1,35 @@
+{
+  "name": "aipilot/statement",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Большой редакционный тезис между секциями.",
+  "useWhen": [
+    "позиционирование",
+    "миссия",
+    "переход между смысловыми блоками"
+  ],
+  "constraints": {
+    "textMaxLength": 320
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-section"
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2
+  },
+  "accessibility": {
+    "visibleHeadingRequired": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

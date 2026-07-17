@@ -1,0 +1,37 @@
+{
+  "name": "aipilot/feature-card",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Одна карточка преимущества.",
+  "useWhen": [
+    "дочерний элемент feature-grid"
+  ],
+  "constraints": {
+    "requiredParent": "aipilot/feature-grid",
+    "titleMaxLength": 70
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "child-only",
+    "parent": [
+      "aipilot/feature-grid"
+    ]
+  },
+  "semantics": {
+    "landmark": "article",
+    "headingLevel": 3
+  },
+  "accessibility": {
+    "linkTextMustBeDescriptive": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/feature-card",
+  "version": "1.1.0",
+  "title": "Карточка преимущества",
+  "category": "aipilot",
+  "icon": "index-card",
+  "description": "Карточка внутри сетки преимуществ.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "number": {
+      "type": "string",
+      "default": "01"
+    },
+    "kicker": {
+      "type": "string",
+      "default": "Категория"
+    },
+    "title": {
+      "type": "string",
+      "default": "Название преимущества"
+    },
+    "text": {
+      "type": "string",
+      "default": "Поясните ценность в двух или трёх предложениях."
+    },
+    "linkLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "linkUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "variant": {
+      "type": "string",
+      "default": "plain",
+      "enum": [
+        "plain",
+        "outlined",
+        "accent",
+        "dark"
+      ]
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php",
+  "parent": [
+    "aipilot/feature-grid"
+  ]
+}

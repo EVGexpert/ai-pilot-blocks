@@ -1,0 +1,107 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/seo-ai-benefits",
+  "version": "1.1.0",
+  "title": "SEO и AI-поиск",
+  "category": "aipilot",
+  "icon": "search",
+  "description": "Секция с преимуществами сайта для классического поиска и AI-поиска.",
+  "keywords": [
+    "SEO",
+    "AI search",
+    "LLM",
+    "GEO"
+  ],
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "eyebrow": {
+      "type": "string",
+      "default": "SEO + AI Search"
+    },
+    "title": {
+      "type": "string",
+      "default": "Сайт понятен поиску и ИИ-системам."
+    },
+    "description": {
+      "type": "string",
+      "default": "Серверный контент, семантическая структура и машиночитаемые данные помогают находить, понимать и корректно цитировать страницы."
+    },
+    "searchTitle": {
+      "type": "string",
+      "default": "Для поисковых систем"
+    },
+    "aiTitle": {
+      "type": "string",
+      "default": "Для AI-поиска и агентов"
+    },
+    "searchItems": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Семантический HTML",
+          "text": "Заголовки, секции, списки и ссылки передают структуру страницы без зависимости от JavaScript."
+        },
+        {
+          "title": "Серверный рендеринг",
+          "text": "Важный текст присутствует в исходном HTML и доступен поисковым роботам сразу при загрузке."
+        },
+        {
+          "title": "Sitemap и метаданные",
+          "text": "WordPress сообщает поиску основные URL, язык, даты обновления и связи между страницами."
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    },
+    "aiItems": {
+      "type": "array",
+      "default": [
+        {
+          "title": "llms.txt и JSON-контекст",
+          "text": "ИИ получает краткое описание сайта, ключевые страницы и ссылки на машиночитаемые ресурсы."
+        },
+        {
+          "title": "Структурированные блоки",
+          "text": "Контент хранится в типизированных атрибутах Gutenberg, а не в случайной HTML-разметке."
+        },
+        {
+          "title": "Доступность и ARIA",
+          "text": "Понятные landmarks, подписи и состояния помогают браузерным агентам распознавать интерфейс."
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    },
+    "tone": {
+      "type": "string",
+      "default": "ink",
+      "enum": [
+        "ink",
+        "paper"
+      ]
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php"
+}

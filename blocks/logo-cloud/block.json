@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/logo-cloud",
+  "version": "1.1.0",
+  "title": "Логотипы / марки",
+  "category": "aipilot",
+  "icon": "grid-view",
+  "description": "Строка партнёров, технологий или клиентов.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "eyebrow": {
+      "type": "string",
+      "default": "Работает вместе с"
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        "WORDPRESS",
+        "GUTENBERG",
+        "FSE",
+        "MCP"
+      ],
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php"
+}

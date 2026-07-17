@@ -1,0 +1,40 @@
+{
+  "name": "aipilot/hero",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Главный первый экран страницы.",
+  "useWhen": [
+    "главная страница",
+    "лендинг продукта",
+    "лендинг услуги"
+  ],
+  "constraints": {
+    "maxPerPage": 1,
+    "titleMaxLength": 120,
+    "maxButtons": 2
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-section",
+    "recommendedPosition": "first",
+    "maxPerPage": 1
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 1
+  },
+  "accessibility": {
+    "labelledByHeading": true,
+    "decorativeVisualsHidden": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

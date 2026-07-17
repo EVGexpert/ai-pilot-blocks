@@ -1,0 +1,67 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/section",
+  "version": "1.1.0",
+  "title": "Секция",
+  "category": "aipilot",
+  "icon": "align-wide",
+  "description": "Универсальный контейнер для вложенных блоков.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "tone": {
+      "type": "string",
+      "default": "paper",
+      "enum": [
+        "paper",
+        "white",
+        "ink",
+        "accent",
+        "muted"
+      ]
+    },
+    "spacing": {
+      "type": "string",
+      "default": "spacious",
+      "enum": [
+        "compact",
+        "normal",
+        "spacious",
+        "hero"
+      ]
+    },
+    "width": {
+      "type": "string",
+      "default": "wide",
+      "enum": [
+        "content",
+        "wide",
+        "full"
+      ]
+    },
+    "divider": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php"
+}

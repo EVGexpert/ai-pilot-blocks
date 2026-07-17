@@ -1,0 +1,38 @@
+{
+  "name": "aipilot/faq",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Секция частых вопросов.",
+  "useWhen": [
+    "FAQ",
+    "возражения",
+    "поддержка"
+  ],
+  "constraints": {
+    "recommendedItems": "3-8"
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-section",
+    "maxPerPage": 1
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2,
+    "interaction": "details-summary"
+  },
+  "accessibility": {
+    "nativeDetailsSummary": true,
+    "labelledByHeading": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

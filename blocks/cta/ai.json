@@ -1,0 +1,39 @@
+{
+  "name": "aipilot/cta",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Основной финальный призыв к действию.",
+  "useWhen": [
+    "конец лендинга",
+    "форма перехода",
+    "контактная секция"
+  ],
+  "constraints": {
+    "maxButtons": 2,
+    "recommendedMaxPerPage": 2
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-section",
+    "recommendedPosition": "near-end",
+    "maxPerPage": 2
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2
+  },
+  "accessibility": {
+    "buttonLabelsMustDescribeAction": true,
+    "labelledByHeading": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

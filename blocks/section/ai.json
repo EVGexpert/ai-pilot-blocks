@@ -1,0 +1,33 @@
+{
+  "name": "aipilot/section",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Контролируемая секция с фоном, шириной и вертикальным ритмом.",
+  "useWhen": [
+    "обёртка для стандартных блоков",
+    "создание отдельных смысловых секций"
+  ],
+  "constraints": {
+    "recommendedMaxDepth": 2
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-or-container"
+  },
+  "semantics": {
+    "landmark": "section"
+  },
+  "accessibility": {
+    "requiresAccessibleNameWhenNoVisibleHeading": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

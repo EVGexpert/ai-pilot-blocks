@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/steps",
+  "version": "1.1.0",
+  "title": "Этапы",
+  "category": "aipilot",
+  "icon": "editor-ol",
+  "description": "Последовательность этапов или шагов.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "eyebrow": {
+      "type": "string",
+      "default": "Процесс"
+    },
+    "title": {
+      "type": "string",
+      "default": "Как это работает"
+    },
+    "description": {
+      "type": "string",
+      "default": "Пошагово объясните процесс."
+    },
+    "layout": {
+      "type": "string",
+      "default": "horizontal",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Первый шаг",
+          "text": "Описание шага."
+        },
+        {
+          "title": "Второй шаг",
+          "text": "Описание шага."
+        },
+        {
+          "title": "Третий шаг",
+          "text": "Описание шага."
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php"
+}

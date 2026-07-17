@@ -1,0 +1,36 @@
+{
+  "name": "aipilot/logo-cloud",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Компактная строка доверия с текстовыми марками.",
+  "useWhen": [
+    "логотипы клиентов",
+    "список интеграций",
+    "технологический стек"
+  ],
+  "constraints": {
+    "maxItems": 10
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-section"
+  },
+  "semantics": {
+    "landmark": "section",
+    "content": "list"
+  },
+  "accessibility": {
+    "sectionLabelRequired": true,
+    "nativeListPreferred": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

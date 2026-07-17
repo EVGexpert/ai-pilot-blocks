@@ -1,0 +1,35 @@
+{
+  "name": "aipilot/testimonial",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Выразительная цитата клиента, эксперта или бренда.",
+  "useWhen": [
+    "отзыв",
+    "цитата",
+    "принцип компании"
+  ],
+  "constraints": {
+    "quoteMaxLength": 360
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-section"
+  },
+  "semantics": {
+    "landmark": "section",
+    "content": "blockquote"
+  },
+  "accessibility": {
+    "quoteAttributionRequired": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

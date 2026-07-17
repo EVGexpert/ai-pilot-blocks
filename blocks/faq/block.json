@@ -1,0 +1,57 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/faq",
+  "version": "1.1.0",
+  "title": "FAQ",
+  "category": "aipilot",
+  "icon": "editor-help",
+  "description": "Список вопросов и ответов на нативных details/summary.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "eyebrow": {
+      "type": "string",
+      "default": "FAQ"
+    },
+    "title": {
+      "type": "string",
+      "default": "Частые вопросы"
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "question": "Первый вопрос?",
+          "answer": "Краткий и понятный ответ."
+        },
+        {
+          "question": "Второй вопрос?",
+          "answer": "Краткий и понятный ответ."
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php"
+}

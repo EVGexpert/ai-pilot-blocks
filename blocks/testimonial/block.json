@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/testimonial",
+  "version": "1.1.0",
+  "title": "Цитата / отзыв",
+  "category": "aipilot",
+  "icon": "format-quote",
+  "description": "Крупная цитата с подписью.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "quote": {
+      "type": "string",
+      "default": "Добавьте сильную цитату клиента или принцип компании."
+    },
+    "name": {
+      "type": "string",
+      "default": "Имя автора"
+    },
+    "role": {
+      "type": "string",
+      "default": "Должность"
+    },
+    "company": {
+      "type": "string",
+      "default": "Компания"
+    },
+    "tone": {
+      "type": "string",
+      "default": "blue",
+      "enum": [
+        "blue",
+        "rose",
+        "acid",
+        "ink"
+      ]
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php"
+}

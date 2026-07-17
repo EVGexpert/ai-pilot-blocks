@@ -1,0 +1,60 @@
+{
+  "name": "aipilot/seo-ai-benefits",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Объясняет технические и контентные преимущества сайта для поисковых систем, AI-поиска и браузерных агентов.",
+  "useWhen": [
+    "страница AI-продукта",
+    "страница SEO-услуги",
+    "описание технической платформы",
+    "блок доверия на корпоративном сайте"
+  ],
+  "doNotUseWhen": [
+    "преимущества не подтверждены фактической реализацией",
+    "на странице уже есть аналогичная секция"
+  ],
+  "placement": {
+    "level": "root-section",
+    "recommendedAfter": [
+      "aipilot/feature-grid",
+      "aipilot/split-panel"
+    ],
+    "recommendedBefore": [
+      "aipilot/steps",
+      "aipilot/faq",
+      "aipilot/cta"
+    ],
+    "maxPerPage": 1
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2,
+    "childHeadingLevel": 3,
+    "listMarkup": true
+  },
+  "accessibility": {
+    "labelledByHeading": true,
+    "nativeLists": true,
+    "decorativeElementsHidden": true,
+    "requiresUniqueHeadingId": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true,
+    "claimsMustMatchSiteCapabilities": true,
+    "recommendedAnchor": "ai-search"
+  },
+  "constraints": {
+    "maxPerPage": 1,
+    "recommendedItemsPerColumn": "2-6",
+    "titleMaxLength": 100,
+    "descriptionMaxLength": 280
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  }
+}

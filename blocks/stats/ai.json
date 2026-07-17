@@ -1,0 +1,37 @@
+{
+  "name": "aipilot/stats",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Секция с 2–6 ключевыми показателями.",
+  "useWhen": [
+    "цифры компании",
+    "результаты",
+    "метрики продукта"
+  ],
+  "constraints": {
+    "recommendedItems": "2-6"
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-section"
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2,
+    "items": "list"
+  },
+  "accessibility": {
+    "numbersNeedTextLabels": true,
+    "labelledByHeading": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "aipilot/feature-grid",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Контейнер для набора карточек преимуществ.",
+  "useWhen": [
+    "преимущества продукта",
+    "услуги",
+    "бенто-сетка"
+  ],
+  "constraints": {
+    "allowedChildren": [
+      "aipilot/feature-card"
+    ],
+    "recommendedItems": "3-6"
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-section",
+    "allowedChildren": [
+      "aipilot/feature-card"
+    ]
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2
+  },
+  "accessibility": {
+    "labelledByHeading": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}

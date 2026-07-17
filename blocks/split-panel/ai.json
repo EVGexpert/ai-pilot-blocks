@@ -1,0 +1,36 @@
+{
+  "name": "aipilot/split-panel",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Двухколоночная секция для объяснения технологии или процесса.",
+  "useWhen": [
+    "описание продукта",
+    "демонстрация интерфейса",
+    "технологическая секция"
+  ],
+  "constraints": {
+    "maxPerPage": 3
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "root-section"
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2
+  },
+  "accessibility": {
+    "decorativeVisualsHidden": true,
+    "labelledByHeading": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  }
+}
