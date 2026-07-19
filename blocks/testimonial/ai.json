@@ -31,5 +31,17 @@
   "seo": {
     "serverRendered": true,
     "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-testimonial",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "blue"
+        ]
+      }
+    }
   }
 }

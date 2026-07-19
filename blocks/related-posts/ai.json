@@ -1,0 +1,63 @@
+{
+  "name": "aipilot/related-posts",
+  "schemaVersion": 3,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Автоматическая подборка связанных публикаций.",
+  "useWhen": [
+    "низ шаблона записи",
+    "перелинковка блога"
+  ],
+  "constraints": {
+    "maxPerPost": 1,
+    "countRange": [
+      2,
+      6
+    ]
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "single-template",
+    "recommendedPosition": "after-author",
+    "maxPerPost": 1
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2
+  },
+  "accessibility": {
+    "labelledByHeading": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-related-posts",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "paper"
+        ]
+      },
+      "headingSize": {
+        "classPrefix": "is-heading-",
+        "baseValues": [
+          "auto"
+        ]
+      }
+    },
+    "cssVariableAttributes": {
+      "columns": {
+        "variable": "--ap-related-columns"
+      }
+    }
+  }
+}

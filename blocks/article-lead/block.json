@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/article-lead",
+  "version": "1.2.4",
+  "title": "Лид статьи",
+  "category": "aipilot",
+  "icon": "editor-paragraph",
+  "description": "Крупный вводный абзац для начала статьи.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "default": "Коротко сформулируйте главную мысль и пользу материала для читателя."
+    },
+    "tone": {
+      "type": "string",
+      "default": "plain",
+      "enum": [
+        "plain",
+        "acid",
+        "blue"
+      ]
+    },
+    "showRule": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php",
+  "keywords": [
+    "лид",
+    "введение",
+    "анонс"
+  ],
+  "example": {
+    "attributes": {
+      "tone": "acid"
+    }
+  }
+}

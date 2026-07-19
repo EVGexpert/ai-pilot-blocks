@@ -5,3 +5,5 @@
 .wp-block-aipilot-section { outline: 1px dashed color-mix(in srgb, currentColor 25%, transparent); outline-offset: -1px; }
 .wp-block-aipilot-feature-grid .block-editor-inner-blocks > .block-editor-block-list__layout { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 @media (max-width: 900px) { .wp-block-aipilot-feature-grid .block-editor-inner-blocks > .block-editor-block-list__layout { grid-template-columns: 1fr; } }
+
+.wp-block-aipilot-media-text,.wp-block-aipilot-pullquote,.wp-block-aipilot-link-card,.wp-block-aipilot-callout,.wp-block-aipilot-article-links,.wp-block-aipilot-author-box,.wp-block-aipilot-related-posts{max-width:var(--wp--style--global--wide-size)}

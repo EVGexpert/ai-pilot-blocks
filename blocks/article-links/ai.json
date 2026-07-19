@@ -1,0 +1,56 @@
+{
+  "name": "aipilot/article-links",
+  "schemaVersion": 3,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Семантический список источников и материалов.",
+  "useWhen": [
+    "источники",
+    "литература",
+    "внутренняя перелинковка",
+    "полезные материалы"
+  ],
+  "constraints": {
+    "maxItems": 20
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "post-content",
+    "recommendedPosition": "near-end"
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2
+  },
+  "accessibility": {
+    "labelledByHeading": true,
+    "descriptiveLinksRequired": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-article-links",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "plain"
+        ]
+      },
+      "headingSize": {
+        "classPrefix": "is-heading-",
+        "baseValues": [
+          "auto"
+        ]
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "aipilot/faq",
-  "version": "1.1.0",
+  "version": "1.2.4",
   "title": "FAQ",
   "category": "aipilot",
   "icon": "editor-help",
@@ -24,6 +24,28 @@
     "title": {
       "type": "string",
       "default": "Частые вопросы"
+    },
+    "headingSize": {
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "questionSize": {
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "sm",
+        "md",
+        "lg"
+      ]
     },
     "items": {
       "type": "array",

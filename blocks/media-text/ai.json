@@ -1,0 +1,66 @@
+{
+  "name": "aipilot/media-text",
+  "schemaVersion": 3,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Изображение с поясняющим текстом и подписью.",
+  "useWhen": [
+    "скриншот с объяснением",
+    "фото с контекстом",
+    "схема и вывод"
+  ],
+  "constraints": {
+    "altRequiredForInformativeImage": true
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "post-content"
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevelAttribute": "headingLevel"
+  },
+  "accessibility": {
+    "labelledByHeading": true,
+    "meaningfulAltRequired": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-media-text",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "mediaPosition": {
+        "classPrefix": "is-media-",
+        "baseValues": [
+          "left"
+        ]
+      },
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "white"
+        ]
+      },
+      "ratio": {
+        "classPrefix": "is-ratio-",
+        "baseValues": [
+          "landscape"
+        ]
+      },
+      "headingSize": {
+        "classPrefix": "is-heading-",
+        "baseValues": [
+          "auto"
+        ]
+      }
+    }
+  }
+}

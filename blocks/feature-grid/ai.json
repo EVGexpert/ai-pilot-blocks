@@ -37,5 +37,20 @@
   "seo": {
     "serverRendered": true,
     "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-feature-grid",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": []
+      }
+    },
+    "cssVariableAttributes": {
+      "columns": {
+        "variable": "--ap-columns"
+      }
+    }
   }
 }

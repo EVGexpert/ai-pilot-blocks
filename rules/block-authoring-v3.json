@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 6,
   "profile": "aipilot-block-authoring-v3",
   "wordpress": {
     "minimum": "6.9",
@@ -89,7 +89,8 @@
       "Use enum for layouts, tones, alignment, spacing and visual variants.",
       "URLs are strings but must be escaped with esc_url() at render time.",
       "Limit repeaters in render.php with array_slice() and document limits in ai.json.",
-      "Avoid attributes containing raw HTML, CSS, JavaScript, PHP or serialized executable code."
+      "Avoid attributes containing raw HTML, CSS, JavaScript, PHP or serialized executable code.",
+      "Blocks with visible headings should expose headingSize as a controlled enum (auto, xs, sm, md, lg, xl) and map it through styleContract rather than arbitrary CSS values."
     ]
   },
   "rendering": {
@@ -116,6 +117,81 @@
     "color": "prefer theme tokens or controlled tone attributes",
     "spacing": "prefer semantic spacing enum",
     "typography": "avoid uncontrolled per-instance settings for agent-built pages"
+  },
+  "styleSystem": {
+    "sharedTokenSelector": ":where([class*=\"wp-block-aipilot-\"])",
+    "requiredSharedVariables": [
+      "--ap-ink",
+      "--ap-paper",
+      "--ap-white",
+      "--ap-muted",
+      "--ap-line",
+      "--ap-acid",
+      "--ap-blue",
+      "--ap-rose",
+      "--ap-wide",
+      "--ap-gutter",
+      "--ap-section",
+      "--ap-radius"
+    ],
+    "rules": [
+      "Declare shared design tokens once in a namespace-wide selector that automatically matches future aipilot blocks; never maintain an enumerated list of block wrapper classes.",
+      "Every block that uses shared tokens must load the shared front-end style handle and the shared editor style handle through block.json.",
+      "Every CSS custom property must include a safe fallback to a theme preset or literal value so the block remains usable with another compatible theme.",
+      "A visual attribute must use a typed enum and must map to a documented CSS class, CSS variable, or server-rendered branch in ai.json styleContract.",
+      "The editor preview and render.php must use the same attribute values and class naming contract.",
+      "Every non-base enum value must have an explicit CSS selector; base values may rely on the root selector only when declared in styleContract.baseValues.",
+      "Use get_block_wrapper_attributes() and useBlockProps() so the generated wp-block-aipilot-* wrapper class is always present on front end and in the iframe editor.",
+      "After adding or changing a block, run the authoring audit and manually switch every visual option in both editor and front-end preview."
+    ],
+    "aiJsonStyleContract": {
+      "requiredFor": "Every new or modified block with CSS-driven attributes.",
+      "fields": {
+        "rootClass": "Stable CSS class placed on the rendered block root.",
+        "tokenScope": "Use shared when the block consumes --ap-* variables.",
+        "classAttributes": "Attribute-to-classPrefix mappings with optional baseValues.",
+        "booleanClasses": "Boolean attribute-to-class mappings.",
+        "cssVariableAttributes": "Attribute-to-CSS-custom-property mappings."
+      },
+      "example": {
+        "rootClass": "ap-example",
+        "tokenScope": "shared",
+        "classAttributes": {
+          "tone": {
+            "classPrefix": "is-tone-",
+            "baseValues": [
+              "paper"
+            ]
+          }
+        }
+      }
+    },
+    "headingSizeContract": {
+      "attribute": "headingSize",
+      "enum": [
+        "auto",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "classPrefix": "is-heading-",
+      "arbitraryValues": false
+    }
+  },
+  "qualityGates": {
+    "requiredBeforeRelease": [
+      "All required block files exist and contain valid JSON/PHP/JavaScript.",
+      "block.json uses apiVersion 3, supports.html=false, and declares editorScript, style, editorStyle and render.",
+      "Shared token selector is namespace-wide and includes future block wrappers automatically.",
+      "Every declared styleContract matches block.json enums, render.php classes or variables, and CSS selectors.",
+      "Every background/tone option is tested in the editor iframe and on the public page.",
+      "REST authoring audit returns valid=true with no errors."
+    ],
+    "auditEndpoint": "/wp-json/aipilot-blocks/v1/audit",
+    "ability": "aipilot-blocks/audit-library",
+    "failurePolicy": "Do not publish or package a block library while authoring audit contains errors."
   },
   "semantics": {
     "page": {
@@ -222,7 +298,172 @@
       "aipilot/hero": 1,
       "aipilot/seo-ai-benefits": 1,
       "aipilot/faq": 1,
-      "aipilot/cta": 2
+      "aipilot/cta": 2,
+      "aipilot/article-lead": 1,
+      "aipilot/author-box": 1,
+      "aipilot/related-posts": 1
+    },
+    "postContentBlocks": [
+      "aipilot/article-lead",
+      "aipilot/pullquote",
+      "aipilot/link-card",
+      "aipilot/media-text",
+      "aipilot/callout",
+      "aipilot/article-links"
+    ],
+    "singleTemplateBlocks": [
+      "aipilot/author-box",
+      "aipilot/related-posts"
+    ]
+  },
+  "updatedFor": "1.2.4",
+  "contentDocuments": {
+    "page": {
+      "h1Policy": "Exactly one H1 inside page content or template. Hero may provide it.",
+      "recommendedBlocks": [
+        "aipilot/hero",
+        "aipilot/section"
+      ]
+    },
+    "post": {
+      "h1Policy": "No H1 inside post_content; single-post template provides the H1.",
+      "recommendedOrder": [
+        "aipilot/article-lead",
+        "core/paragraph",
+        "core/heading level 2",
+        "core/list",
+        "aipilot/media-text",
+        "aipilot/pullquote",
+        "aipilot/callout",
+        "aipilot/link-card",
+        "aipilot/faq",
+        "aipilot/article-links",
+        "aipilot/author-box",
+        "aipilot/cta",
+        "aipilot/related-posts"
+      ]
+    },
+    "single-post-template": {
+      "required": [
+        "core/post-title level 1",
+        "core/post-content"
+      ],
+      "recommended": [
+        "aipilot/author-box",
+        "aipilot/related-posts"
+      ]
+    },
+    "archive-template": {
+      "required": [
+        "core/query with inherit=true",
+        "core/post-template",
+        "core/query-pagination"
+      ],
+      "recommended": [
+        "core/query-title",
+        "core/term-description",
+        "core/search",
+        "core/categories"
+      ]
     }
+  },
+  "editorialRules": {
+    "headings": [
+      "The single-post template owns H1. Generated post content must begin with a lead or paragraph, then use H2 for main sections and H3 for nested sections.",
+      "Do not use heading level for visual sizing.",
+      "Inside post content, keep vertical heading rhythm compact: H2-H4 should introduce the next paragraph without landing-page-sized gaps."
+    ],
+    "links": [
+      "Use descriptive anchor text.",
+      "Set newTab only when it benefits the reader; render rel=\"noopener noreferrer\" with target=\"_blank\".",
+      "Use link-card for important contextual links and article-links for source lists."
+    ],
+    "images": [
+      "Every informative image requires alt text describing purpose, not appearance only.",
+      "Captions provide source or context and do not replace alt text.",
+      "Do not place essential text only inside images."
+    ],
+    "quotes": [
+      "Use pullquote for editorial quotations inside posts and testimonial for full-width marketing sections.",
+      "Provide attribution when known."
+    ],
+    "archives": [
+      "All archive queries must inherit the current category, tag, author, date or search context.",
+      "Pagination must remain inside core/query.",
+      "Cards use semantic article wrappers and linked post titles."
+    ],
+    "widths": [
+      "Single-post headers, featured images, article content, article blocks, author boxes, related posts and comments use the shared 1024px editorial column.",
+      "CTA is the only article block allowed to use a full-viewport background; its inner content remains aligned to the 1024px editorial column.",
+      "Do not use arbitrary per-block widths inside post content.",
+      "Full-bleed CTA backgrounds must use a symmetric bleed technique that cannot leave a right-side strip or trigger horizontal scrolling."
+    ],
+    "faq": [
+      "FAQ headingSize controls the section heading and questionSize controls summary questions independently.",
+      "Use compact vertical padding inside posts; landing pages may use the default roomier section spacing."
+    ]
+  },
+  "validationContexts": {
+    "page": "Page content; exactly one H1 provider expected.",
+    "post": "Post content only; H1 is forbidden because the single-post template owns it.",
+    "template": "Generic FSE template; one H1 expected.",
+    "single-post-template": "Requires one core/post-title at level 1 and one core/post-content.",
+    "archive-template": "Requires one H1 and at least one core/query with query.inherit=true."
+  },
+  "starterBlueprints": {
+    "aiPilotSystemArticle": {
+      "title": "Что такое AI Pilot: как ИИ помогает собирать и развивать WordPress-сайт",
+      "documentType": "post",
+      "patternSlug": "aipilot-starter/article-ai-pilot-system",
+      "goals": [
+        "Представить систему AI Pilot в понятной форме.",
+        "Показать, как связаны тема, блоки, коннектор и AI-интерфейс.",
+        "Использовать большую часть редакционных блоков в одной статье.",
+        "Соблюдать требования SEO и AI-search readiness."
+      ],
+      "seo": {
+        "focusKeyphrase": "AI Pilot для WordPress",
+        "title": "Что такое AI Pilot: ИИ-система для WordPress и FSE",
+        "metaDescription": "Разбираем, что такое AI Pilot, из каких компонентов состоит система и как она помогает создавать WordPress-сайты и статьи с учетом SEO и AI-поиска."
+      },
+      "blockSequence": [
+        "aipilot/article-lead",
+        "core/paragraph",
+        "core/heading",
+        "core/list",
+        "aipilot/media-text",
+        "aipilot/pullquote",
+        "core/heading",
+        "core/paragraph",
+        "core/list ordered",
+        "aipilot/callout",
+        "core/heading",
+        "core/paragraph",
+        "aipilot/link-card",
+        "aipilot/callout",
+        "core/heading",
+        "core/paragraph",
+        "core/list",
+        "aipilot/faq",
+        "aipilot/article-links",
+        "aipilot/author-box",
+        "aipilot/cta",
+        "aipilot/related-posts"
+      ]
+    }
+  },
+  "editorialLayout": {
+    "readingWidth": "900px desktop target; may reduce to 760px on medium viewports",
+    "wideWidth": "Use theme wideSize, currently 1280px",
+    "fullWidth": "Full-width sections must not be placed inside an outer group whose contentSize caps alignfull or alignwide children",
+    "templateRule": "Place core/post-content directly in the single template with layout.contentSize and layout.wideSize. Do not wrap it in a narrower constrained group.",
+    "blockRule": "Editorial blocks must set width:100%, max-width:none, min-width:0 and box-sizing:border-box; the parent FSE alignment controls their final width.",
+    "responsiveChecks": [
+      "1440px desktop",
+      "1024px laptop/tablet landscape",
+      "768px tablet",
+      "390px mobile"
+    ],
+    "duplicateRule": "author-box and related-posts may be provided either in post content or by the template fallback, but must render only once."
   }
 }

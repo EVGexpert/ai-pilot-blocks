@@ -29,5 +29,23 @@
   "seo": {
     "serverRendered": true,
     "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-section",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": []
+      },
+      "spacing": {
+        "classPrefix": "is-spacing-",
+        "baseValues": []
+      },
+      "width": {
+        "classPrefix": "is-width-",
+        "baseValues": []
+      }
+    }
   }
 }

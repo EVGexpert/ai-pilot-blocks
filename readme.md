@@ -27,11 +27,21 @@
 - `aipilot/testimonial`
 - `aipilot/faq`
 - `aipilot/cta`
+- `aipilot/seo-ai-benefits`
+- `aipilot/article-lead`
+- `aipilot/pullquote`
+- `aipilot/link-card`
+- `aipilot/media-text`
+- `aipilot/callout`
+- `aipilot/article-links`
+- `aipilot/author-box`
+- `aipilot/related-posts`
 
 ## REST и Abilities
 
 - `GET /wp-json/aipilot-blocks/v1/manifest` — требует `edit_posts`.
 - `aipilot-blocks/get-manifest` — read-only WordPress Ability; автоматически добавляется в конфигурацию MCP Adapter, когда он установлен.
+- `GET /wp-json/aipilot-blocks/v1/audit` и `aipilot-blocks/audit-library` — read-only проверка метаданных, дизайн-токенов и CSS-вариантов перед релизом.
 - Стандартная Ability `aipilot-mcp/get-block-registry` также видит все блоки автоматически.
 
 ## Как добавить новый блок
@@ -55,11 +65,23 @@ my-block/
 - ограничивайте варианты через `enum` в `block.json` и повторяйте проверку на сервере;
 - экранируйте текст через `esc_html`, URL через `esc_url`, разрешённый HTML через `wp_kses_post`;
 - не выполняйте запись в БД при регистрации блока;
-- для контейнера возвращайте `InnerBlocks.Content` в `save()`.
+- для контейнера возвращайте `InnerBlocks.Content` в `save()`;
+- не перечисляйте блоки вручную в селекторе общих дизайн-токенов: используйте `:where([class*="wp-block-aipilot-"])`;
+- для каждого CSS-управляемого enum добавляйте `styleContract` в `ai.json`;
+- перед упаковкой запускайте `/wp-json/aipilot-blocks/v1/audit` и исправляйте все ошибки.
 
 ## Установка
 
 Установите ZIP через **Плагины → Добавить новый → Загрузить плагин**. Сборка Node.js не требуется: архив содержит готовые браузерные скрипты без JSX.
+
+
+## 1.1.1
+
+- исправлена смена фона в `aipilot/seo-ai-benefits`;
+- общий scope дизайн-токенов переведён на future-safe селектор `:where([class*="wp-block-aipilot-"])`;
+- добавлен обязательный `styleContract` для CSS-управляемых атрибутов;
+- добавлен read-only аудит библиотеки блоков через REST и MCP Ability;
+- аудит проверяет соответствие `block.json`, `ai.json`, `render.php` и CSS до релиза.
 
 ## 1.0.1
 
@@ -75,7 +97,17 @@ my-block/
 - Human guide: `docs/BLOCK-AUTHORING-V3.md`
 - Public manifest: `/wp-json/aipilot-blocks/v1/manifest`
 - Public rules: `/wp-json/aipilot-blocks/v1/rules`
-- Authenticated validation: `POST /wp-json/aipilot-blocks/v1/validate` with serialized Gutenberg `content`
+- Authenticated validation: `POST /wp-json/aipilot-blocks/v1/validate` with serialized Gutenberg `content` and optional `documentType` (`page`, `post`, `template`, `single-post-template`, `archive-template`)
 - Abilities: `aipilot-blocks/get-manifest`, `aipilot-blocks/get-rules`, `aipilot-blocks/validate-content`
 
-The library now includes `aipilot/seo-ai-benefits`, bringing the total to 13 blocks. Public discovery can be disabled with the `aipilot_blocks_public_discovery` filter.
+The library includes 21 blocks after the editorial 1.2 release. Public discovery can be disabled with the `aipilot_blocks_public_discovery` filter.
+
+
+## 1.2.0
+
+Added editorial blocks: `article-lead`, `pullquote`, `link-card`, `media-text`, `callout`, `article-links`, `author-box`, and `related-posts`. Added post-content and template placement rules, post-specific H1 policy, archive/query guidance, accessibility requirements for images and links, and server-rendered related content.
+
+
+## Обновление 1.2.4
+
+Шаблон записи использует единую колонку 1024 px. Excerpt и имя автора удалены из верхней части записи; CTA получает полноэкранный фон. Редакционные блоки с заголовками поддерживают управляемый размер заголовка.

@@ -1,0 +1,53 @@
+{
+  "name": "aipilot/pullquote",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Выделенная цитата внутри статьи.",
+  "useWhen": [
+    "экспертная цитата",
+    "ключевой тезис",
+    "фрагмент интервью"
+  ],
+  "constraints": {
+    "quoteMaxLength": 600
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "post-content"
+  },
+  "semantics": {
+    "content": "figure-blockquote",
+    "headingLevel": 0
+  },
+  "accessibility": {
+    "attributionRecommended": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-pullquote",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "paper"
+        ]
+      },
+      "size": {
+        "classPrefix": "is-size-",
+        "baseValues": [
+          "medium"
+        ]
+      }
+    }
+  }
+}

@@ -33,5 +33,17 @@
   "seo": {
     "serverRendered": true,
     "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-stats",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "ink"
+        ]
+      }
+    }
   }
 }

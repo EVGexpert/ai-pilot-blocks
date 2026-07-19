@@ -33,5 +33,17 @@
   "seo": {
     "serverRendered": true,
     "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-feature-card",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "variant": {
+        "classPrefix": "is-variant-",
+        "baseValues": [
+          "plain"
+        ]
+      }
+    }
   }
 }

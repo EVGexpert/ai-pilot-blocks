@@ -64,13 +64,14 @@ final class AIPilot_Blocks_Manifest {
         }
 
         self::$cache = array(
-            'schemaVersion' => 2,
+            'schemaVersion' => 3,
             'pluginVersion' => AIPILOT_BLOCKS_VERSION,
             'namespace'     => 'aipilot',
             'blockApiVersion' => 3,
             'contentModel'  => 'dynamic-attributes-and-inner-blocks',
             'rulesEndpoint' => rest_url( 'aipilot-blocks/v1/rules' ),
             'validateEndpoint' => rest_url( 'aipilot-blocks/v1/validate' ),
+            'auditEndpoint' => rest_url( 'aipilot-blocks/v1/audit' ),
             'blocks'        => $items,
         );
         return self::$cache;
@@ -108,15 +109,25 @@ add_action(
         );
         register_rest_route(
             'aipilot-blocks/v1',
+            '/audit',
+            array(
+                'methods'             => WP_REST_Server::READABLE,
+                'permission_callback' => static fn(): bool => current_user_can( 'edit_plugins' ) || current_user_can( 'manage_options' ),
+                'callback'            => static fn(): WP_REST_Response => rest_ensure_response( AIPilot_Blocks_Rules::audit_library() ),
+            )
+        );
+        register_rest_route(
+            'aipilot-blocks/v1',
             '/validate',
             array(
                 'methods'             => WP_REST_Server::CREATABLE,
                 'permission_callback' => static fn(): bool => current_user_can( 'edit_posts' ),
                 'args'                => array(
                     'content' => array( 'type' => 'string', 'required' => true ),
+                    'documentType' => array( 'type' => 'string', 'required' => false, 'default' => 'page', 'enum' => array( 'page', 'post', 'template', 'single-post-template', 'archive-template' ) ),
                 ),
                 'callback'            => static function ( WP_REST_Request $request ): WP_REST_Response {
-                    return rest_ensure_response( AIPilot_Blocks_Rules::validate_content( (string) $request->get_param( 'content' ) ) );
+                    return rest_ensure_response( AIPilot_Blocks_Rules::validate_content( (string) $request->get_param( 'content' ), (string) $request->get_param( 'documentType' ) ) );
                 },
             )
         );
@@ -171,15 +182,28 @@ add_action(
             )
         );
         wp_register_ability(
+            'aipilot-blocks/audit-library',
+            array(
+                'label'               => __( 'Audit AI Pilot block library', 'ai-pilot-blocks' ),
+                'description'         => __( 'Checks API v3 metadata, shared design-token scope, visual variant contracts and CSS coverage without changing the site.', 'ai-pilot-blocks' ),
+                'category'            => 'aipilot-blocks',
+                'input_schema'        => array( 'type' => 'object', 'properties' => array() ),
+                'output_schema'       => array( 'type' => 'object' ),
+                'permission_callback' => static fn( array $input = array() ): bool => current_user_can( 'edit_plugins' ) || current_user_can( 'manage_options' ),
+                'execute_callback'    => static fn( array $input = array() ): array => AIPilot_Blocks_Rules::audit_library(),
+                'meta'                => array( 'mcp' => array( 'public' => true, 'type' => 'tool' ), 'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ) ),
+            )
+        );
+        wp_register_ability(
             'aipilot-blocks/validate-content',
             array(
                 'label'               => __( 'Validate an AI Pilot block tree', 'ai-pilot-blocks' ),
                 'description'         => __( 'Validates serialized Gutenberg content without changing the site.', 'ai-pilot-blocks' ),
                 'category'            => 'aipilot-blocks',
-                'input_schema'        => array( 'type' => 'object', 'properties' => array( 'content' => array( 'type' => 'string' ) ), 'required' => array( 'content' ) ),
+                'input_schema'        => array( 'type' => 'object', 'properties' => array( 'content' => array( 'type' => 'string' ), 'documentType' => array( 'type' => 'string', 'enum' => array( 'page', 'post', 'template', 'single-post-template', 'archive-template' ), 'default' => 'page' ) ), 'required' => array( 'content' ) ),
                 'output_schema'       => array( 'type' => 'object' ),
                 'permission_callback' => static fn( array $input = array() ): bool => current_user_can( 'edit_posts' ),
-                'execute_callback'    => static fn( array $input = array() ): array => AIPilot_Blocks_Rules::validate_content( (string) ( $input['content'] ?? '' ) ),
+                'execute_callback'    => static fn( array $input = array() ): array => AIPilot_Blocks_Rules::validate_content( (string) ( $input['content'] ?? '' ), (string) ( $input['documentType'] ?? 'page' ) ),
                 'meta'                => array( 'mcp' => array( 'public' => true, 'type' => 'tool' ), 'annotations' => array( 'readonly' => true, 'destructive' => false, 'idempotent' => true ) ),
             )
         );
@@ -190,7 +214,7 @@ add_filter(
     'mcp_adapter_default_server_config',
     static function ( array $config ): array {
         $config['tools'] = isset( $config['tools'] ) && is_array( $config['tools'] ) ? $config['tools'] : array();
-        foreach ( array( 'aipilot-blocks/get-manifest', 'aipilot-blocks/get-rules', 'aipilot-blocks/validate-content' ) as $tool ) {
+        foreach ( array( 'aipilot-blocks/get-manifest', 'aipilot-blocks/get-rules', 'aipilot-blocks/audit-library', 'aipilot-blocks/validate-content' ) as $tool ) {
             if ( ! in_array( $tool, $config['tools'], true ) ) {
                 $config['tools'][] = $tool;
             }

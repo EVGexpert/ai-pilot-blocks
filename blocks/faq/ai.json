@@ -1,6 +1,6 @@
 {
   "name": "aipilot/faq",
-  "schemaVersion": 2,
+  "schemaVersion": 4,
   "safeForAgent": true,
   "contentModel": "attributes",
   "purpose": "Секция частых вопросов.",
@@ -10,7 +10,8 @@
     "поддержка"
   ],
   "constraints": {
-    "recommendedItems": "3-8"
+    "recommendedItems": "3-8",
+    "headingControls": "headingSize controls the section H2; questionSize controls summary question text."
   },
   "mcp": {
     "registry": true,
@@ -34,5 +35,23 @@
   "seo": {
     "serverRendered": true,
     "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-faq",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "headingSize": {
+        "classPrefix": "is-heading-",
+        "baseValues": [
+          "auto"
+        ]
+      },
+      "questionSize": {
+        "classPrefix": "is-question-",
+        "baseValues": [
+          "auto"
+        ]
+      }
+    }
   }
 }

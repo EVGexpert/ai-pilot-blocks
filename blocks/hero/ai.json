@@ -36,5 +36,21 @@
   "seo": {
     "serverRendered": true,
     "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-hero",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": []
+      },
+      "alignment": {
+        "classPrefix": "is-align-",
+        "baseValues": [
+          "left"
+        ]
+      }
+    }
   }
 }

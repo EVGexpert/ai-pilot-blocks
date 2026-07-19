@@ -1,0 +1,73 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/pullquote",
+  "version": "1.2.4",
+  "title": "Цитата в статье",
+  "category": "aipilot",
+  "icon": "format-quote",
+  "description": "Редакционная цитата с подписью для длинных материалов.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "quote": {
+      "type": "string",
+      "default": "Ключевая цитата или мысль, которую важно выделить."
+    },
+    "cite": {
+      "type": "string",
+      "default": "Имя автора"
+    },
+    "role": {
+      "type": "string",
+      "default": ""
+    },
+    "tone": {
+      "type": "string",
+      "default": "paper",
+      "enum": [
+        "paper",
+        "ink",
+        "rose"
+      ]
+    },
+    "size": {
+      "type": "string",
+      "default": "medium",
+      "enum": [
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php",
+  "keywords": [
+    "цитата",
+    "blockquote",
+    "интервью"
+  ],
+  "example": {
+    "attributes": {
+      "tone": "rose",
+      "size": "large"
+    }
+  }
+}

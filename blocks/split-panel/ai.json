@@ -32,5 +32,20 @@
   "seo": {
     "serverRendered": true,
     "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-split-panel",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "paper"
+        ]
+      }
+    },
+    "booleanClasses": {
+      "reverse": "is-reverse"
+    }
   }
 }

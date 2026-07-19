@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/callout",
+  "version": "1.2.4",
+  "title": "Выноска",
+  "category": "aipilot",
+  "icon": "info-outline",
+  "description": "Компактная смысловая выноска: вывод, совет, заметка или предупреждение.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "default": "key",
+      "enum": [
+        "key",
+        "note",
+        "tip",
+        "warning"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "default": "Ключевой вывод"
+    },
+    "headingSize": {
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "default": "Коротко зафиксируйте важную мысль или практическое действие."
+    },
+    "linkLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "linkUrl": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php",
+  "keywords": [
+    "выноска",
+    "заметка",
+    "совет"
+  ],
+  "example": {
+    "attributes": {
+      "type": "key"
+    }
+  }
+}

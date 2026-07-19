@@ -56,5 +56,17 @@
     "attributeUpdates": true,
     "treeOperations": true,
     "validation": true
+  },
+  "styleContract": {
+    "rootClass": "ap-seo-ai",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "ink"
+        ]
+      }
+    }
   }
 }

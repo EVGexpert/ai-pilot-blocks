@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "aipilot/seo-ai-benefits",
-  "version": "1.1.0",
+  "version": "1.2.4",
   "title": "SEO и AI-поиск",
   "category": "aipilot",
   "icon": "search",

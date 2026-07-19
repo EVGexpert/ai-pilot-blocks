@@ -1,0 +1,88 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/link-card",
+  "version": "1.2.4",
+  "title": "Карточка ссылки",
+  "category": "aipilot",
+  "icon": "admin-links",
+  "description": "Заметная карточка внутренней или внешней ссылки.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "default": "#"
+    },
+    "label": {
+      "type": "string",
+      "default": "Материал"
+    },
+    "title": {
+      "type": "string",
+      "default": "Полезная ссылка по теме"
+    },
+    "headingSize": {
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "default": "Кратко объясните, что найдёт читатель по ссылке."
+    },
+    "domain": {
+      "type": "string",
+      "default": ""
+    },
+    "newTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "tone": {
+      "type": "string",
+      "default": "white",
+      "enum": [
+        "white",
+        "blue",
+        "acid"
+      ]
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php",
+  "keywords": [
+    "ссылка",
+    "ресурс",
+    "перелинковка"
+  ],
+  "example": {
+    "attributes": {
+      "tone": "blue"
+    }
+  }
+}

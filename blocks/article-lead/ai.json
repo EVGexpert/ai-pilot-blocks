@@ -1,0 +1,52 @@
+{
+  "name": "aipilot/article-lead",
+  "schemaVersion": 2,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Вводный лид статьи без дополнительного заголовка.",
+  "useWhen": [
+    "начало статьи",
+    "краткое резюме материала"
+  ],
+  "constraints": {
+    "maxPerPost": 1,
+    "textMaxLength": 500
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "post-content",
+    "recommendedPosition": "first",
+    "maxPerPost": 1
+  },
+  "semantics": {
+    "content": "paragraph",
+    "headingLevel": 0
+  },
+  "accessibility": {
+    "nativeSemanticsPreferred": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-article-lead",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "plain"
+        ]
+      }
+    },
+    "booleanClasses": {
+      "showRule": "has-rule"
+    }
+  }
+}

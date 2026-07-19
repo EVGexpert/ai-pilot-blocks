@@ -1,0 +1,84 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/article-links",
+  "version": "1.2.4",
+  "title": "Ссылки и источники",
+  "category": "aipilot",
+  "icon": "book-alt",
+  "description": "Список источников, документов и дополнительных материалов.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "default": "Источники и материалы"
+    },
+    "headingSize": {
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Название материала",
+          "url": "#",
+          "description": "Краткое пояснение к источнику."
+        }
+      ],
+      "items": {
+        "type": "object"
+      }
+    },
+    "tone": {
+      "type": "string",
+      "default": "plain",
+      "enum": [
+        "plain",
+        "paper"
+      ]
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php",
+  "keywords": [
+    "источники",
+    "ссылки",
+    "литература"
+  ],
+  "example": {
+    "attributes": {
+      "tone": "paper"
+    }
+  }
+}

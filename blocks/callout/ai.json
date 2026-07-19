@@ -1,0 +1,52 @@
+{
+  "name": "aipilot/callout",
+  "schemaVersion": 3,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Смысловая выноска внутри статьи.",
+  "useWhen": [
+    "ключевой вывод",
+    "совет",
+    "примечание",
+    "предупреждение"
+  ],
+  "constraints": {
+    "textMaxLength": 700
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "post-content"
+  },
+  "semantics": {
+    "content": "aside",
+    "headingLevel": 0
+  },
+  "accessibility": {
+    "nativeAside": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-callout",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "type": {
+        "classPrefix": "is-type-",
+        "baseValues": []
+      },
+      "headingSize": {
+        "classPrefix": "is-heading-",
+        "baseValues": [
+          "auto"
+        ]
+      }
+    }
+  }
+}

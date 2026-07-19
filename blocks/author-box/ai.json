@@ -1,0 +1,56 @@
+{
+  "name": "aipilot/author-box",
+  "schemaVersion": 3,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Карточка автора статьи.",
+  "useWhen": [
+    "шаблон записи",
+    "авторская колонка",
+    "экспертный материал"
+  ],
+  "constraints": {
+    "maxPerPost": 1
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "single-template-or-post-end",
+    "recommendedPosition": "after-content",
+    "maxPerPost": 1
+  },
+  "semantics": {
+    "landmark": "section",
+    "headingLevel": 2
+  },
+  "accessibility": {
+    "avatarAltUsesAuthorName": true,
+    "labelledByHeading": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-author-box",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "white"
+        ]
+      },
+      "headingSize": {
+        "classPrefix": "is-heading-",
+        "baseValues": [
+          "auto"
+        ]
+      }
+    }
+  }
+}

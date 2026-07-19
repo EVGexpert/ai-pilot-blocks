@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "aipilot/cta",
-  "version": "1.1.0",
+  "version": "1.2.4",
   "title": "CTA",
   "category": "aipilot",
   "icon": "megaphone",
@@ -16,6 +16,18 @@
     "title": {
       "type": "string",
       "default": "Сделайте следующий шаг."
+    },
+    "headingSize": {
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
     },
     "text": {
       "type": "string",

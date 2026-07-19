@@ -1,0 +1,54 @@
+{
+  "name": "aipilot/link-card",
+  "schemaVersion": 3,
+  "safeForAgent": true,
+  "contentModel": "attributes",
+  "purpose": "Карточка ссылки с поясняющим контекстом.",
+  "useWhen": [
+    "внутренняя перелинковка",
+    "источник",
+    "дополнительный материал"
+  ],
+  "constraints": {
+    "urlRequired": true,
+    "titleMaxLength": 140
+  },
+  "mcp": {
+    "registry": true,
+    "attributeUpdates": true,
+    "treeOperations": true,
+    "validation": true
+  },
+  "placement": {
+    "level": "post-content"
+  },
+  "semantics": {
+    "content": "link",
+    "headingLevel": 0
+  },
+  "accessibility": {
+    "linkPurposeVisible": true
+  },
+  "seo": {
+    "serverRendered": true,
+    "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-link-card",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "white"
+        ]
+      },
+      "headingSize": {
+        "classPrefix": "is-heading-",
+        "baseValues": [
+          "auto"
+        ]
+      }
+    }
+  }
+}

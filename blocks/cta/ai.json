@@ -1,6 +1,6 @@
 {
   "name": "aipilot/cta",
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "safeForAgent": true,
   "contentModel": "attributes",
   "purpose": "Основной финальный призыв к действию.",
@@ -35,5 +35,29 @@
   "seo": {
     "serverRendered": true,
     "visibleTextOnly": true
+  },
+  "styleContract": {
+    "rootClass": "ap-cta",
+    "tokenScope": "shared",
+    "classAttributes": {
+      "tone": {
+        "classPrefix": "is-tone-",
+        "baseValues": [
+          "acid"
+        ]
+      },
+      "align": {
+        "classPrefix": "is-align-",
+        "baseValues": [
+          "left"
+        ]
+      },
+      "headingSize": {
+        "classPrefix": "is-heading-",
+        "baseValues": [
+          "auto"
+        ]
+      }
+    }
   }
 }

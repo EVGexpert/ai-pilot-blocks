@@ -3,7 +3,7 @@
  * Plugin Name:       AI Pilot Blocks
  * Plugin URI:        https://github.com/EVGexpert/ai-pilot-wp-plugin
  * Description:       Расширяемая библиотека Gutenberg/FSE-блоков, подготовленная для управления через AI Pilot и MCP Abilities.
- * Version:           1.1.0
+ * Version:           1.2.4
  * Requires at least: 6.9
  * Tested up to:      7.0
  * Requires PHP:      8.0
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'AIPILOT_BLOCKS_VERSION', '1.1.0' );
+define( 'AIPILOT_BLOCKS_VERSION', '1.2.4' );
 define( 'AIPILOT_BLOCKS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AIPILOT_BLOCKS_URL', plugin_dir_url( __FILE__ ) );
 

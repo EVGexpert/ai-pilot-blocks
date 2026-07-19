@@ -1,0 +1,95 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/related-posts",
+  "version": "1.2.4",
+  "title": "Связанные материалы",
+  "category": "aipilot",
+  "icon": "screenoptions",
+  "description": "Динамическая сетка публикаций из тех же категорий.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "default": "Читайте также"
+    },
+    "headingSize": {
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "count": {
+      "type": "integer",
+      "default": 3,
+      "minimum": 2,
+      "maximum": 6
+    },
+    "columns": {
+      "type": "integer",
+      "default": 3,
+      "enum": [
+        2,
+        3
+      ]
+    },
+    "showImage": {
+      "type": "boolean",
+      "default": true
+    },
+    "showExcerpt": {
+      "type": "boolean",
+      "default": true
+    },
+    "tone": {
+      "type": "string",
+      "default": "paper",
+      "enum": [
+        "paper",
+        "white",
+        "ink"
+      ]
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php",
+  "usesContext": [
+    "postId",
+    "postType"
+  ],
+  "keywords": [
+    "связанные записи",
+    "рекомендации",
+    "перелинковка"
+  ],
+  "example": {
+    "attributes": {
+      "tone": "paper",
+      "columns": 3
+    }
+  }
+}

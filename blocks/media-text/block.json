@@ -1,0 +1,114 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "aipilot/media-text",
+  "version": "1.2.4",
+  "title": "Изображение с текстом",
+  "category": "aipilot",
+  "icon": "align-pull-left",
+  "description": "Редакционный медиа-блок с изображением, текстом и подписью.",
+  "textdomain": "ai-pilot-blocks",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide",
+      "enum": [
+        "wide",
+        "full"
+      ]
+    },
+    "imageId": {
+      "type": "integer",
+      "default": 0
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "alt": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "default": "Изображение с контекстом"
+    },
+    "headingSize": {
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "default": "Объясните, что показано на изображении и почему это важно для материала."
+    },
+    "caption": {
+      "type": "string",
+      "default": ""
+    },
+    "mediaPosition": {
+      "type": "string",
+      "default": "left",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "tone": {
+      "type": "string",
+      "default": "white",
+      "enum": [
+        "white",
+        "paper",
+        "blue"
+      ]
+    },
+    "ratio": {
+      "type": "string",
+      "default": "landscape",
+      "enum": [
+        "landscape",
+        "portrait",
+        "square"
+      ]
+    },
+    "headingLevel": {
+      "type": "integer",
+      "default": 2,
+      "enum": [
+        2,
+        3
+      ]
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "style": "aipilot-blocks-style",
+  "editorStyle": "aipilot-blocks-editor-style",
+  "render": "file:./render.php",
+  "keywords": [
+    "изображение",
+    "медиа",
+    "текст"
+  ],
+  "example": {
+    "attributes": {
+      "tone": "blue",
+      "mediaPosition": "left"
+    }
+  }
+}
